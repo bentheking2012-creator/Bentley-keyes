@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSD.com | Bentley Carter Keyes</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: #f2f2f2;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #050505, #210000, #090909);
+            border-bottom: 3px solid #d00000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 25px rgba(220, 0, 0, 0.35);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: auto;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ff1717;
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-shadow: 0 0 15px #ff0000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff2020;
+            text-shadow: 0 0 10px red;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 25px;
+            background:
+                radial-gradient(circle at center, rgba(130,0,0,.35), transparent 50%),
+                linear-gradient(135deg, #050505, #190000, #050505);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 9vw, 120px);
+            color: #e00000;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow:
+                0 0 10px #ff0000,
+                0 0 30px #800000;
+            margin-bottom: 15px;
+        }
+
+        .hero h2 {
+            font-size: clamp(22px, 4vw, 42px);
+            color: #fff;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            max-width: 850px;
+            margin: auto;
+            color: #cfcfcf;
+            font-size: 19px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 15px 35px;
+            background: #b00000;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #ff2424;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255,0,0,.4);
+        }
+
+        .button:hover {
+            background: #ff0000;
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255,0,0,.7);
+        }
+
+        section {
+            padding: 90px 25px;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #e00000;
+            font-size: 48px;
+            text-transform: uppercase;
+            margin-bottom: 45px;
+            text-shadow: 0 0 15px rgba(255,0,0,.5);
+        }
+
+        .large-text {
+            font-size: 19px;
+            color: #d5d5d5;
+            margin-bottom: 30px;
+        }
+
+        .red-line {
+            width: 120px;
+            height: 4px;
+            background: #e00000;
+            margin: -25px auto 45px;
+            box-shadow: 0 0 15px red;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .info-card {
+            background: linear-gradient(145deg, #161616, #090909);
+            border: 1px solid #480000;
+            border-left: 4px solid #d00000;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.5);
+            transition: .3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-left-color: #ff2222;
+            box-shadow: 0 10px 35px rgba(180,0,0,.25);
+        }
+
+        .info-card h3 {
+            color: #ff2020;
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .timeline {
+            border-left: 3px solid #c00000;
+            margin-left: 20px;
+            padding-left: 35px;
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #e00000;
+            border-radius: 50%;
+            left: -44px;
+            top: 7px;
+            box-shadow: 0 0 15px red;
+        }
+
+        .timeline-item h3 {
+            color: #ff2424;
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .family-card {
+            text-align: center;
+            padding: 35px 20px;
+            background: #101010;
+            border: 1px solid #3d0000;
+        }
+
+        .family-card .symbol {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .family-card h3 {
+            color: #ff2424;
+            font-size: 24px;
+        }
+
+        .family-card p {
+            color: #bbb;
+        }        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .character-card {
+            min-height: 320px;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #550000;
+            background:
+                linear-gradient(to top, #050505 5%, transparent 75%),
+                radial-gradient(circle at center, #4d0000, #090909 70%);
+        }
+
+        .character-card::before {
+            content: "CHARACTER";
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            color: rgba(255,255,255,.15);
+            font-size: 35px;
+            font-weight: 900;
+        }
+
+        .character-card h3 {
+            position: relative;
+            z-index: 2;
+            color: white;
+            font-size: 27px;
+            text-shadow: 0 0 10px black;
+        }
+
+        .character-card p {
+            position: relative;
+            z-index: 2;
+            color: #ccc;
+        }
+
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: linear-gradient(145deg, #1a0000, #090909);
+            padding: 35px;
+            border: 1px solid #520000;
+            text-align: center;
+        }
+
+        .game-card .icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .game-card h3 {
+            color: #ff1c1c;
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .quote {
+            margin: 60px auto;
+            max-width: 900px;
+            text-align: center;
+            font-size: 28px;
+            font-style: italic;
+            color: #eee;
+            border-top: 2px solid #b00000;
+            border-bottom: 2px solid #b00000;
+            padding: 35px 20px;
+        }
+
+        .cosplay {
+            background:
+                radial-gradient(circle at center, rgba(160,0,0,.25), transparent 55%),
+                #0b0b0b;
+            border: 2px solid #600000;
+            padding: 55px;
+            text-align: center;
+        }
+
+        .cosplay h3 {
+            font-size: 38px;
+            color: #ff2020;
+            margin-bottom: 20px;
+        }
+
+        .cosplay p {
+            max-width: 850px;
+            margin: auto;
+            font-size: 19px;
+            color: #ccc;
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .fact {
+            padding: 25px;
+            background: #111;
+            border-bottom: 3px solid #c00000;
+        }
+
+        .fact strong {
+            display: block;
+            color: #ff2424;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            background: #030303;
+            border-top: 3px solid #b00000;
+            text-align: center;
+            padding: 50px 20px;
+            color: #888;
+        }
+
+        footer strong {
+            color: #e00000;
+            font-size: 25px;
+        }
+
+        @media (max-width: 800px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                letter-spacing: 3px;
+            }
+
+            section {
+                padding: 65px 18px;
+            }
+
+            .section-title {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+        <div class="logo">TSD.COM</div>
+
+        <nav>
+            <a href="#home">HOME</a>
+            <a href="#story">STORY</a>
+            <a href="#family">FAMILY</a>
+            <a href="#friends">FRIENDS</a>
+            <a href="#games">GAMES</a>
+            <a href="#characters">CHARACTERS</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Bentley</h1>
+        <h2>Carter Keyes</h2>
+
+        <p>
+            Welcome to TSD.com, a site dedicated to Bentley Carter Keyes.
+            Bentley is a curious-minded, determined, family-loving guy with
+            a strong personality, a big imagination, and plenty of interests.
+            From gaming with his friends to his love of Mortal Kombat and
+            superhero characters, there is always something going on in
+            Bentley's world.
+        </p>
+
+        <a class="button" href="#story">ENTER BENTLEY'S STORY</a>
+    </div>
+</section>
+
+<section id="story">
+    <h2 class="section-title">The Story</h2>
+    <div class="red-line"></div>
+
+    <p class="large-text">
+        Bentley Carter Keyes was born on March 14th, 2012. His early years
+        were not always easy, and the beginning of middle school was a
+        particularly difficult period for him. Adjusting to a new stage
+        of life brought challenges, but Bentley continued moving forward.
+        As time went on, things began to change for the better, especially
+        when he met people who would become some of his closest friends.
+        Colton, Campbell, Beau, Donovan, and Anthony became important parts
+        of Bentley's life and helped make his school years much better.
+    </p>
+
+    <p class="large-text">
+        Bentley is the kind of person who is naturally curious. He likes
+        learning about things, exploring ideas, playing games, and getting
+        interested in whatever catches his attention. He also has a temper
+        and can become frustrated, but beneath that strong personality is
+        someone who cares deeply about the people around him. His family
+        means a great deal to him, and he values the people who have been
+        there for him throughout his life.
+    </p>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>March 14, 2012</h3>
+            <p>
+                Bentley Carter Keyes is born, beginning the story of a
+                curious and determined young person.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>The Early Years</h3>
+            <p>
+                Bentley grows up developing his own personality, interests,
+                sense of humor, and love for games and fictional characters.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Middle School</h3>
+            <p>
+                The beginning of middle school is difficult, but Bentley
+                eventually finds better days and meets Colton, Campbell,
+                Beau, Donovan, and Anthony.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Today</h3>
+            <p>
+                Bentley continues gaming, spending time with friends,
+                enjoying Mortal Kombat, working toward his goals, and
+                saving for something he really wants.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="family">
+    <h2 class="section-title">Family</h2>
+    <div class="red-line"></div>
+
+    <p class="large-text">
+        Family is one of the most important parts of Bentley's life. He
+        has a mom named Jasmine and a dad named Jacob. Bentley also has
+        two younger siblings, a younger brother named Xander and a younger
+        sister named Madison. Even though every family has its moments,
+        Bentley cares deeply about his family and considers them an
+        important part of who he is.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="family-card">
+            <div class="symbol">👨</div>
+            <h3>Jacob</h3>
+            <p>Bentley's dad.</p>
+        </div>
+
+        <div class="family-card">
+            <div class="symbol">👩</div>
+            <h3>Jasmine</h3>
+            <p>Bentley's mom.</p>
+        </div>
+
+        <div class="family-card">
+            <div class="symbol">👦</div>
+            <h3>Xander</h3>
+            <p>Bentley's younger brother.</p>
+        </div>
+
+        <div class="family-card">
+            <div class="symbol">👧</div>
+            <h3>Madison</h3>
+            <p>Bentley's younger sister.</p>
+        </div>
+
+    </div>
+</section><section id="friends">
+    <h2 class="section-title">Friends</h2>
+    <div class="red-line"></div>
+
+    <p class="large-text">
+        One of the biggest positive changes in Bentley's middle-school
+        years came from the friends he made. Colton, Campbell, Beau,
+        Donovan, and Anthony became people Bentley could spend time with,
+        joke around with, and share his interests with. Having good
+        friends helped turn a difficult beginning into a much better
+        chapter of his life.
+    </p>
+
+    <div class="facts">
+        <div class="fact">
+            <strong>Colton</strong>
+            One of Bentley's good friends.
+        </div>
+
+        <div class="fact">
+            <strong>Campbell</strong>
+            One of Bentley's good friends.
+        </div>
+
+        <div class="fact">
+            <strong>Beau</strong>
+            One of Bentley's good friends.
+        </div>
+
+        <div class="fact">
+            <strong>Donovan</strong>
+            One of Bentley's good friends.
+        </div>
+
+        <div class="fact">
+            <strong>Anthony</strong>
+            One of Bentley's good friends.
+        </div>
+    </div>
+</section>
+
+<section id="games">
+    <h2 class="section-title">Gaming</h2>
+    <div class="red-line"></div>
+
+    <p class="large-text">
+        Gaming is a major part of Bentley's interests. He enjoys playing
+        Fortnite and Minecraft with his friends, turning gaming sessions
+        into opportunities to hang out, compete, build things, and have
+        fun together. Roblox also makes an appearance every now and then.
+        Whether he is jumping into a Fortnite match, building something
+        ridiculous in Minecraft, or checking out Roblox, gaming gives
+        Bentley another way to spend time with the people he enjoys.
+    </p>
+
+    <div class="games">
+
+        <div class="game-card">
+            <div class="icon">🎮</div>
+            <h3>Fortnite</h3>
+            <p>
+                Battles, building, competition, and playing with friends.
+            </p>
+        </div>
+
+        <div class="game-card">
+            <div class="icon">⛏️</div>
+            <h3>Minecraft</h3>
+            <p>
+                Building, exploring, surviving, and creating worlds with
+                friends.
+            </p>
+        </div>
+
+        <div class="game-card">
+            <div class="icon">🧱</div>
+            <h3>Roblox</h3>
+            <p>
+                A game Bentley jumps into every now and then for something
+                different.
+            </p>
+        </div>
+
+        <div class="game-card">
+            <div class="icon">⚔️</div>
+            <h3>Mortal Kombat</h3>
+            <p>
+                One of Bentley's favorite fighting-game series and a major
+                part of his interests.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="characters">
+    <h2 class="section-title">Favorite Characters</h2>
+    <div class="red-line"></div>
+
+    <p class="large-text">
+        Bentley has a strong interest in powerful and memorable fictional
+        characters. Some of the characters that fit his interests include
+        Absolute Batman, Beast from X-Men, Reverse-Flash, and Scorpion
+        from Mortal Kombat. These characters bring different personalities,
+        abilities, and styles to the world of comics, movies, and games.
+    </p>
+
+    <div class="character-grid">
+
+        <div class="character-card">
+            <div>
+                <h3>Absolute Batman</h3>
+                <p>
+                    A darker Batman-inspired character and one of Bentley's
+                    major current interests.
+                </p>
+            </div>
+        </div>
+
+        <div class="character-card">
+            <div>
+                <h3>Beast</h3>
+                <p>
+                    The brilliant and powerful X-Men character known for
+                    his intelligence and incredible abilities.
+                </p>
+            </div>
+        </div>
+
+        <div class="character-card">
+            <div>
+                <h3>Reverse-Flash</h3>
+                <p>
+                    A dangerous speedster from the DC universe with a
+                    distinctive red-and-yellow appearance.
+                </p>
+            </div>
+        </div>
+
+        <div class="character-card">
+            <div>
+                <h3>Scorpion</h3>
+                <p>
+                    One of Mortal Kombat's most recognizable fighters and
+                    a character Bentley especially enjoys.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="cosplay">
+        <h3>The Batman Cosplay Goal</h3>
+
+        <p>
+            Bentley is also someone who works hard toward the things he
+            wants. One of his current goals is saving up money for an
+            Absolute Batman cosplay. Instead of simply wanting it and
+            forgetting about it, Bentley is putting effort into making
+            the goal possible. It represents another side of his
+            personality: when he becomes interested in something, he can
+            be determined to work toward getting it.
+        </p>
+
+        <div class="quote">
+            "Curious mind. Strong personality. Big goals."
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Quick Facts</h2>
+    <div class="red-line"></div>
+
+    <div class="facts">
+
+        <div class="fact">
+            <strong>Full Name</strong>
+            Bentley Carter Keyes
+        </div>
+
+        <div class="fact">
+            <strong>Birthday</strong>
+            March 14th, 2012
+        </div>
+
+        <div class="fact">
+            <strong>Personality</strong>
+            Curious-minded, determined, and strong-willed.
+        </div>
+
+        <div class="fact">
+            <strong>Favorite Games</strong>
+            Fortnite, Minecraft, Roblox, and Mortal Kombat.
+        </div>
+
+        <div class="fact">
+            <strong>Family</strong>
+            Jacob, Jasmine, Xander, and Madison.
+        </div>
+
+        <div class="fact">
+            <strong>Current Goal</strong>
+            Saving for an Absolute Batman cosplay.
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <strong>TSD.COM</strong>
+    <p>
+        The Bentley Carter Keyes Archive
+    </p>
+    <p>
+        © 2026 TSD.com
+    </p>
+</footer>
+
+</body>
+</html>
